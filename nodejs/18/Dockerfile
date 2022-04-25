@@ -7,9 +7,6 @@ RUN         apt update \
             && npm -g install npm@latest \
             && useradd -m -d /home/container container
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
