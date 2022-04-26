@@ -8,7 +8,7 @@ RUN         apt update \
             && useradd -m -d /home/container container
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 USER        container
 ENV         USER=container HOME=/home/container
