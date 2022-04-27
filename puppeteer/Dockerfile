@@ -24,7 +24,9 @@ RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
     && mkdir -p /home/pptruser/Downloads /app \
     && chown -R pptruser:pptruser /home/pptruser \
     && chown -R pptruser:pptruser /app \
-    && adduser -h -S /home/container container
+    && addgroup -S container && adduser -S -G container container \ 
+    && mkdir -p /home/container \
+    && chown -R container:container /home/container 
 
 # Run everything after as non-privileged user.
 USER        container
