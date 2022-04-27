@@ -27,7 +27,9 @@ RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
     && adduser -d -m /home/container container
 
 # Run everything after as non-privileged user.
-USER pptruser
+USER        container
+ENV         USER=container HOME=/home/container
+WORKDIR     /home/container
 
 COPY        ./entrypoint.sh /entrypoint.sh
 CMD         [ "/bin/sh", "/entrypoint.sh" ]
