@@ -23,7 +23,8 @@ RUN yarn add puppeteer@10.0.0
 RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
     && mkdir -p /home/pptruser/Downloads /app \
     && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /app
+    && chown -R pptruser:pptruser /app \
+    && adduser -d -m /home/container container
 
 # Run everything after as non-privileged user.
 USER pptruser
