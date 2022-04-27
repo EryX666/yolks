@@ -10,7 +10,7 @@ on:
       - puppeteer/**
 jobs:
   push:
-    name: "yolks:puppeteer${{ matrix.tag }}"
+    name: "yolks:puppeteer"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -33,8 +33,8 @@ jobs:
       - uses: docker/build-push-action@v2
         with:
           context: ./puppeteer
-          file: ./puppeteer/${{ matrix.tag }}/Dockerfile
+          file: ./puppeteer/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/eryx666/yolks:puppeteer${{ matrix.tag }}
+            ghcr.io/eryx666/yolks:puppeteer
