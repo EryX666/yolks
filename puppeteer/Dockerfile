@@ -29,4 +29,4 @@ RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
 USER pptruser
 
 COPY        ./entrypoint.sh /entrypoint.sh
-CMD         [ "/bin/bash", "/entrypoint.sh" ]
+CMD         [ "/bin/sh", "/entrypoint.sh" ]
