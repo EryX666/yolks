@@ -1,4 +1,4 @@
-FROM alpine
+FROM        --platform=$TARGETOS/$TARGETARCH alpine:latest
 
 # Installs latest Chromium (92) package.
 RUN apk add --no-cache \
@@ -23,12 +23,11 @@ RUN yarn add puppeteer@10.0.0
 RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
     && mkdir -p /home/pptruser/Downloads /app \
     && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /app \
-    && addgroup -S container && adduser -S -G container container \ 
-    && mkdir -p /home/container \
-    && chown -R container:container /home/container 
+    && chown -R pptruser:pptruser /app 
 
-# Run everything after as non-privileged user.
+RUN         apk add --update --no-cache ca-certificates tzdata \
+				&& adduser -D -h /home/container container
+
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
